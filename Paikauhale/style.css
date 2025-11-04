@@ -1,0 +1,107 @@
+/* zera margens */
+  body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    background-color: #000000; /* cor do resto do site */
+  }
+
+  /* seção do topo */
+  .topo {
+    height: 400px; /* altura do banner */
+    background: url('imagens/fundo.png') no-repeat center bottom;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    position: relative;
+  }
+
+  /* overlay opcional para legibilidade */
+  .topo::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(3, 3, 3, 0.274);
+  }
+
+  /* logotipo dentro do topo */
+  .topo img {
+    position: relative;
+    width: 18rem;
+    height: 18rem;
+    cursor: pointer;
+  }
+
+  /* conteúdo do restante da página */
+  main {
+    padding: 40px;
+    color: white;
+    display: flex;
+    gap: 1rem;
+  }
+
+   .corpo img {
+    width: 10rem;
+    height: 15rem;
+  }
+
+  #subtitulo {
+    font-size: 0.9rem;
+  }
+        
+   .main2 {
+    color: white;
+    text-align: center;
+  }
+
+  .section-imagens {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .rodape {
+    color: white;
+    
+    text-align: center;
+  }
+
+  /* Seção de contato */
+  .contato {
+    padding: 2rem;
+    text-align: center;
+    color: white;
+  }
+
+  .botoes-contato {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .botao {
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.2s;
+  }
+
+  .botao:hover {
+    transform: translateY(-2px);
+  }
+
+  .email {
+    background: #4a4a4a;
+    color: white;
+  }
+
+  .whatsapp {
+    background: #25D366;
+    color: white;
+  }
