@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+  <!-- Google tag (gtag.js) -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z4RHTWNE6R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Z4RHTWNE6R');
+</script>
+
+  <!-- Google AdSense -->
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6030429337094514"
+     crossorigin="anonymous"></script>
+
+  <!--head-->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paikauhale</title>
+    <link rel="shortcut icon" href="imagens/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Mensagem de boas-vindas / aviso -->
+
+  <div id="welcomeOverlay" class="welcome-overlay" role="dialog" aria-modal="true" aria-hidden="false">
+    <div class="welcome-box" role="document">
+      <h2>Bem vindo</h2>
+      <p>Obrigado por visitar! <br> Clique no logotipo para acessar a pagina "Sobre" e conhecer a idealização do site <br> Clique em Financial para acesssar a Financial Advanced chart <br> Atenção esse site ainda não esta otimizado para dispositivos móveis. </p>
+      <button id="welcomeOk" class="button-ok" aria-label="Fechar mensagem">OK</button>
+    </div>
+  </div>
+
+  <header class="topo">
+    <a href="sobre.html" class="logo-link" aria-label="Ir para a página Sobre">
+      <img src="imagens/logotipo.jpg" alt="Logotipo Paikauhale">
+    </a>
+  </header>
+
+  <!-- Seção TradingView Ticker Tape Widget -->
+
+  <section>
+  <!-- TradingView Widget BEGIN -->
+   <div class="tradingview-widget-container">
+   <div class="tradingview-widget-container__widget"></div>
+   <div class="tradingview-widget-copyright"><a href="https://br.tradingview.com/markets/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+  {
+  "symbols" : [
+    {
+      "proName": "FOREXCOM:SPXUSD",
+      "title": "S&P 500 Index"
+    },
+    {
+      "proName": "FOREXCOM:NSXUSD",
+      "title": "US 100 Cash CFD"
+    },
+    {
+      "proName": "FX_IDC:EURUSD",
+      "title": "EUR to USD"
+    },
+    {
+      "proName": "BITSTAMP:BTCUSD",
+      "title": "Bitcoin"
+    },
+    {
+      "proName": "BITSTAMP:ETHUSD",
+      "title": "Ethereum"
+    },
+    {
+      "proName": "BMFBOVESPA:IBOV",
+      "title": "Ibovespa"
+    },
+    {
+      "proName": "BMFBOVESPA:PETR4",
+      "title": "Petro4"
+    },
+    {
+      "proName": "BMFBOVESPA:PETR3",
+      "title": "Petro3"
+    }
+  ],
+  "colorTheme": "dark",
+  "locale": "br",
+  "largeChartUrl": "",
+  "isTransparent": false,
+  "showSymbolLogo": true,
+  "displayMode": "adaptive"
+}
+    </script>
+   </div>
+  <!-- TradingView Widget END -->
+  
+  </section>
+
+  <!-- Seção Chatbot IA -->
+
+  <section>
+
+<div id="chat-container" style="position: fixed; bottom: 20px; right: 20px; width: 320px; background: #ffffff; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; z-index: 1000; overflow: hidden; border: 1px solid #e0e0e0;">
+    <div style="background: #1a2a3a; color: #ffffff; padding: 15px; display: flex; align-items: center; gap: 10px;">
+        <div style="width: 10px; height: 10px; background: #00ff00; border-radius: 50%; box-shadow: 0 0 5px #00ff00;"></div>
+        <strong style="font-size: 14px;">Core-AI | Portfólio</strong>
+    </div>
+    <div id="chat-window" style="height: 250px; overflow-y: auto; padding: 15px; background: #f8f9fa; display: flex; flex-direction: column; gap: 10px;">
+        <p style="margin: 0; padding: 8px 12px; background: #e9ecef; border-radius: 15px; border-bottom-left-radius: 2px; font-size: 13px; color: #333; align-self: flex-start;">
+            Olá! Sou a IA do Lucas. Posso te falar sobre meus projetos de Engenharia de Software ou sobre minha visão para sistemas de exploração e automação avançada. O que quer saber?
+        </p>
+    </div>
+    <div style="padding: 10px; background: #ffffff; display: flex; gap: 5px; border-top: 1px solid #eee;">
+        <input type="text" id="user-input" placeholder="Pergunte algo..." style="flex: 1; border: 1px solid #ddd; padding: 8px 12px; border-radius: 20px; outline: none; font-size: 13px;">
+        <button onclick="sendMessage()" style="background: #1a2a3a; color: white; border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
+        </button>
+    </div>
+</div>
+
+  </section>
+
+  <!-- Seção link Financial Advanced Chart -->
+
+  <div class="link-financial">
+    <a href="financial.html" class="btn-financial" aria-label="Abrir página Financial">Financial</a>
+  </div>
+
+   <!-- Hyper-Learning Engine -->
+
+<div id="motor-de-dobra-container">
+
+<div style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
+    <a href="motor.html" target="_blank" style="
+        background-color: #cc0000; 
+        color: white; 
+        padding: 12px 24px; 
+        text-decoration: none; 
+        border-radius: 5px; 
+        font-weight: bold; 
+        box-shadow: 0 4px 6px rgba(247, 246, 246, 0.2);
+        transition: transform 0.2s;
+        display: inline-block;">
+        🚀 Iniciar Motor de Dobra (BETA)
+    </a>
+</div>
+
+
+
+</div>
+
+  <!-- Seção principal -->
+
+  <main class="corpo">
+      <img src="imagens/perfil.jpg" alt="erro ao carregar imagem" loading="lazy">
+    
+        <p id="subtitulo"><strong>Lucas Bertoncelo</strong> Engenheiro de Software em formação | Especialista em ambientes Linux & Automação <br>
+
+Sou estudante de Engenharia de Software na Estácio e entusiasta de sistemas de alta performance. <br>
+Atualmente, foco meu desenvolvimento no ecossistema Open Source, utilizando o Fedora Linux como meu laboratório principal para criação de soluções escaláveis. <br>
+Tenho domínio em virtualização (GNOME Boxes/KVM) para a simulação de ambientes críticos e entrega de códigos robustos. <br>
+
+Mais do que um portfólio, este site é um hub de engenharia aplicada. Aqui, desenvolvo o Advanced Financial Chart, focado em processamento de dados financeiros, e o Hyper-Learning Engine (Motor de Dobra), uma ferramenta de IA que utiliza engenharia de prompt avançada para comprimir a curva de aprendizado em matemática e computação. <br> <br>
+
+Meu objetivo é integrar times de engenharia de ponta, contribuindo com automação, segurança da informação e arquiteturas de sistemas que desafiam o status quo tecnológico. Estou pronto para transformar desafios complexos em código eficiente.
+        </p>
+    
+  </main>
+
+  <!--Seção link GitHub-->
+
+  <div class="caixa-link">
+    <a id="linkgithub" href="https://github.com/LucasBertoncelo" class="link-box" target="_blank" rel="noopener" aria-label="Abrir meu GitHub">
+      <span class="icone"></span>
+      <span class="texto">Meu GitHub</span>
+    </a>
+
+    <a id="linkLinkedIn" href="https://www.linkedin.com/in/lucas-vinicius-bertoncelo-1b914431a" class="link-box" target="_blank" rel="noopener" aria-label="Abrir meu Linkedin">
+      <span class="icone"></span>
+      <span class="texto">Meu Linkedin</span>
+    </a>
+
+  </div>
+
+  <!--Seção qualificações-->
+
+  <section id="Qualificações">
+    <h2>Hard Skils</h2>
+    <ul>
+      <li><strong>Desenvolvimento Web:</strong> HTML5, CSS3, JavaScript</li>
+      <li><strong>Sistemas Operacionais:</strong> Administração de sistemas Linux (Fedora/RHEL) e automação de ambientes</li>
+      <li><strong>Cloud Computing:</strong> IaaS, Paas, SaaS</li>
+      <li><strong>Controle de versão:</strong> Git (Gitflow e gerenciamento de repositórios)</li>
+      <li><strong>Desenvolvimento responsivo e acessibilidade web</strong></li>
+      <li><strong>Segurança da informação</strong></li>
+    </ul>
+
+    <h2>Soft Skils</h2>
+    <ul>
+      <li><strong>Comunicação eficaz:</strong> Habilidade para transmitir ideias de forma clara e concisa</li>
+      <li><strong>Trabalho em equipe:</strong> Colaboração produtiva com colegas de diferentes áreas</li>
+      <li><strong>Resolução de problemas:</strong> Abordagem analítica para identificar e solucionar desafios técnicos</li>
+      <li><strong>Adaptabilidade:</strong> Capacidade de aprender rapidamente novas tecnologias e metodologias</li>
+      <li><strong>Gerenciamento de tempo:</strong> Priorização de tarefas em ambientes de alta pressão</li>
+      <li><strong>Liderança:</strong> Capacidade de liderar equipes e projetos com foco em resultados</li>
+    </ul>
+  </section>
+  
+  <!--Seção contato-->
+
+  <section class="contato">
+    <h2>Entre em contato</h2>
+    <div class="botoes-contato">
+      <a href="mailto:lucasbertoncelo@outlook.com" class="botao email">
+        📧 Email
+      </a>
+      <a href="https://wa.me/5512997515776" class="botao whatsapp">
+        💬 WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <footer class="rodape" aria-label="Rodapé do site">
+     <p>© 2026 Paikauhale — Todos os direitos reservados.</p>
+     <p>Full Stack by: Lucas Bertoncelo</p>
+  </footer>
+
+  <!-- Script para controlar o overlay de boas-vindas -->
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const overlay = document.getElementById('welcomeOverlay');
+      const ok = document.getElementById('welcomeOk');
+      function closeOverlay() {
+        overlay.classList.add('hidden');
+        overlay.setAttribute('aria-hidden', 'true');
+      }
+      ok.addEventListener('click', closeOverlay);
+      // fechar clicando fora da caixa
+      overlay.addEventListener('click', e => { if (e.target === overlay) closeOverlay(); });
+      // fechar com Esc
+      document.addEventListener('keydown', e => { if (e.key === 'Escape' && !overlay.classList.contains('hidden')) closeOverlay(); });
+    });
+  </script>
+
+
+  <!-- Script do Chatbot IA -->
+
+  <section>
+<script>
+  async function sendMessage() {
+    const input = document.getElementById('user-input');
+    // Mudei o nome da variável para chatDisplay para não conflitar com 'window'
+    const chatDisplay = document.getElementById('chat-window'); 
+    const message = input.value.trim();
+
+    if (!message) return;
+
+    // Adiciona sua mensagem na tela
+    chatDisplay.innerHTML += `<p style="margin: 0; padding: 8px 12px; background: #1a2a3a; color: white; border-radius: 15px; border-bottom-right-radius: 2px; font-size: 13px; align-self: flex-end;">${message}</p>`;
+    input.value = '';
+    chatDisplay.scrollTop = chatDisplay.scrollHeight;
+
+    try {
+        const response = await fetch('/.netlify/functions/gemini', {
+            method: 'POST',
+            body: JSON.stringify({ text: message }) // 'text' combina com seu gemini.js
+        });
+        
+        const data = await response.json();
+        
+        // Adiciona a resposta da IA usando data.reply
+        chatDisplay.innerHTML += `<p style="margin: 0; padding: 8px 12px; background: #e9ecef; border-radius: 15px; border-bottom-left-radius: 2px; font-size: 13px; color: #333; align-self: flex-start;">${data.reply}</p>`;
+        chatDisplay.scrollTop = chatDisplay.scrollHeight;
+    } catch (error) {
+        console.error("Erro ao falar com a IA:", error);
+        chatDisplay.innerHTML += `<p style="color: red; font-size: 11px;">Erro na conexão.</p>`;
+    }
+}
+       
+</script>
+
+</section>
+    
+</body>
+</html>
