@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hyper-Learning Engine | Laboratório</title>
+    <link rel="shortcut icon" href="imagens/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Estilos específicos do Laboratório */
+        body {
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Courier New', Courier, monospace; /* Fonte mais "técnica" */
+        }
+        .console-container {
+            width: 90%;
+            max-width: 800px;
+            background: #1e1e1e; /* Fundo escuro estilo terminal */
+            color: #00ff00;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            
+        }
+        input, button {
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: none;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #cc0000;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        #resultado-visual {
+            margin-top: 20px;
+            border: 1px dashed #555;
+            min-height: 200px;
+            background: #fff;
+            color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .venn-circle {
+        transition: all 0.3s ease;
+    }
+    </style>
+</head>
+<body>
+
+    <body>
+
+    <div class="console-container">
+        <h1 style="border-bottom: 1px solid #00ff00; padding-bottom: 10px;">⚙️ Motor de Dobra: Teoria dos Conjuntos</h1>
+        <p>Digite os elementos separados por vírgula (Ex: 1, 2, 3, 4)</p>
+        
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <div style="flex: 1;">
+                <label>Conjunto A:</label>
+                <input type="text" id="input-a" placeholder="Ex: 1, 2, 3, 4, 5" style="width: 100%;">
+            </div>
+            <div style="flex: 1;">
+                <label>Conjunto B:</label>
+                <input type="text" id="input-b" placeholder="Ex: 4, 5, 6, 7, 8" style="width: 100%;">
+            </div>
+        </div>
+        
+        <button onclick="calcularConjuntos()" style="width: 100%; margin-top: 20px;">CALCULAR OPERAÇÕES</button>
+        
+        <div id="resultado-visual" style="flex-direction: column; align-items: flex-start; padding: 20px; font-family: monospace;">
+            <p style="color: #555;">Os resultados aparecerão aqui...</p>
+        </div>
+
+        <div class="console-container" style="margin-top: 40px; border-top: 2px solid #cc0000;">
+
+
+
+    <h2>🔢 Módulo 2: Conversor de Bases</h2>
+    <p>Converta Decimal para Binário e Hexadecimal.</p>
+    
+    <input type="number" id="input-decimal" placeholder="Digite um número decimal" style="width: 100%;" oninput="converterBases()">
+    
+    <div id="resultado-bases" style="margin-top: 20px; display: flex; gap: 20px;">
+        <div style="flex: 1; background: #222; padding: 10px; border-left: 4px solid #00ff00;">
+            <small>BINÁRIO:</small><br>
+            <strong id="res-binario">0000</strong>
+        </div>
+        <div style="flex: 1; background: #222; padding: 10px; border-left: 4px solid #ffcc00;">
+            <small>HEXADECIMAL:</small><br>
+            <strong id="res-hexa">0x0</strong>
+        </div>
+    </div>
+</div>
+
+<script>
+        // Função nova para o conversor
+    function converterBases() {
+        let num = document.getElementById('input-decimal').value;
+        if (num === "") return;
+        
+        let decimal = parseInt(num);
+        
+        // A mágica do JavaScript: o método toString(base)
+        document.getElementById('res-binario').innerText = decimal.toString(2);
+        document.getElementById('res-hexa').innerText = "0x" + decimal.toString(16).toUpperCase();
+    }
+</script>
+
+        <div style="margin-top: 20px; font-size: 0.8em; color: #aaa; text-align: center;">
+            <a href="index.html" style="color: #fff; text-decoration: none;">&larr; Voltar para a Base</a>
+        </div>
+    </div>
+
+    <script>
+    function calcularConjuntos() {
+        let textoA = document.getElementById('input-a').value;
+        let textoB = document.getElementById('input-b').value;
+
+        let arrayA = [...new Set(textoA.split(',').map(item => item.trim()).filter(item => item !== ""))];
+        let arrayB = [...new Set(textoB.split(',').map(item => item.trim()).filter(item => item !== ""))];
+
+        // Lógica Matemática
+        let interseccao = arrayA.filter(x => arrayB.includes(x));
+        let apenasA = arrayA.filter(x => !arrayB.includes(x));
+        let apenasB = arrayB.filter(x => !arrayA.includes(x));
+        let uniao = [...new Set([...arrayA, ...arrayB])];
+
+        const visual = document.getElementById('resultado-visual');
+        
+        // Renderização do Diagrama Visual
+        visual.innerHTML = `
+            <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+                
+                <div style="display: flex; justify-content: center; align-items: center; height: 250px; position: relative; width: 100%; margin-bottom: 30px;">
+                    
+                    <div style="width: 200px; height: 200px; border: 2px solid #cc0000; border-radius: 50%; background: rgba(204, 0, 0, 0.1); position: absolute; left: calc(50% - 140px); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; text-align: center;">
+                        <strong style="color: #cc0000; position: absolute; top: -25px;">Conjunto A</strong>
+                        <div style="font-size: 0.8em; color: #333;">${apenasA.join(', ')}</div>
+                    </div>
+
+                    <div style="width: 200px; height: 200px; border: 2px solid #007bff; border-radius: 50%; background: rgba(0, 123, 255, 0.1); position: absolute; left: calc(50% - 60px); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; text-align: center;">
+                        <strong style="color: #007bff; position: absolute; top: -25px;">Conjunto B</strong>
+                        <div style="font-size: 0.8em; color: #333;">${apenasB.join(', ')}</div>
+                    </div>
+
+                    <div style="position: absolute; z-index: 10; font-weight: bold; color: #d63384; text-shadow: 1px 1px 0 white;">
+                        ${interseccao.join(', ')}
+                    </div>
+                </div>
+
+                <div style="width: 100%; border-top: 1px solid #eee; padding-top: 15px;">
+                    <p><strong>A ∩ B (Intersecção):</strong> { ${interseccao.join(', ')} }</p>
+                    <p><strong>A ∪ B (União):</strong> { ${uniao.join(', ')} }</p>
+                </div>
+            </div>
+        `;
+    }
+</script>
+
+
+
+<footer class="rodape" aria-label="Rodapé do site">
+     <p>© 2026 Paikauhale — Todos os direitos reservados.</p>
+     <p>Full Stack by: Lucas Bertoncelo</p>
+  </footer>
+
+
+</body>
+
+</body>
+</html>

@@ -1,0 +1,510 @@
+  /* cores e variáveis personalizadas */
+:root{
+  --bg-1: #07070a;
+  --bg-2: #0b0f14;
+  --panel: rgba(255,255,255,0.03);
+  --muted: #9aa7b2;
+  --accent: #5eead4; /* cor de destaque */
+  --glass: rgba(255,255,255,0.035);
+  --text: #e6eef3;
+}
+
+  /* tema escuro estilizado */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: var(--text);
+  background:
+    radial-gradient(800px 400px at 10% 10%, rgba(94,234,212,0.06), transparent 10%),
+    radial-gradient(600px 300px at 90% 90%, rgba(99,102,241,0.04), transparent 12%),
+    linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  overflow-x: hidden;
+}
+
+  /* leve vinheta nas bordas */
+body::after{
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(60% 60% at 50% 60%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.35) 100%);
+  mix-blend-mode: multiply;
+  z-index: 0;
+}
+
+  /* papéis/containers com efeito glass */
+main, header, .caixa-link, .link-financial, .contato {
+  position: relative;
+  z-index: 1; /* garante sobre o body::after */
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 6px 24px rgba(1,4,8,0.6);
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+  /* links e botões com destaque */
+a, .botao, .btn-financial {
+  color: var(--text);
+  outline: none;
+}
+a:hover, .botao:hover, .btn-financial:hover {
+  text-decoration: none;
+  box-shadow: 0 8px 28px rgba(94,234,212,0.10);
+  transform: translateY(-3px);
+}
+
+  /* pequenos detalhes */
+::selection { background: rgba(94,234,212,0.18); color: #001216; }
+h1, h2 { color: #fff; letter-spacing: -0.2px; }
+p, li { color: var(--muted); line-height: 1.45; }
+
+  /* mantém .topo com seu z-index acima do overlay */
+.topo { z-index: 2; }
+.topo > * { z-index: 3; }
+
+  /* zera margens */
+  body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    background-color: #000000; /* cor do resto do site */
+  }
+
+  /* seção do topo */
+  .topo {
+    height: 400px; /* altura do banner */
+    background: url('imagens/fundo.png') no-repeat center bottom;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    position: relative;
+  }
+
+  /* overlay opcional para legibilidade */
+  .topo::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(3, 3, 3, 0.274);
+  }
+
+  /* logotipo dentro do topo */
+  .topo img {
+    position: relative;
+    width: 18rem;
+    height: 18rem;
+    cursor: pointer;
+  }
+
+  /* estilo para o link do logotipo */
+  .logo-link {
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .logo-link img {
+    display: block;
+    cursor: pointer;
+  }
+
+  .logo-link:hover {
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.6),
+              0 0 60px rgba(100, 200, 255, 0.4);
+    transform: scale(1.05);
+  }
+
+  /* conteúdo do restante da página */
+  main {
+    padding: 40px;
+    color: white;
+    display: flex;
+    gap: 1rem;
+  }
+
+   .corpo img {
+    width: 10rem;
+    height: 15rem;
+  }
+
+  #subtitulo {
+    font-size: 0.9rem;
+  }
+
+  #linkgithub {
+    color: white;
+  }
+
+  /* caixa para link do GitHub  e LinkedIn */
+  
+.caixa-link {
+  display: flex;
+  margin: 1.25rem 0;
+  padding-left: 2.5rem;
+}
+.link-box {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .65rem 1rem;
+  margin-right: 1.5rem;
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+  transition: transform .14s ease, box-shadow .18s ease, filter .12s;
+}
+.link-box .icone { font-size: 1.15rem; }
+.link-box:hover {
+  transform: translateY(-4px);
+  filter: brightness(1.08);
+  box-shadow: 0 12px 36px rgba(58,123,213,0.22), 0 0 24px rgba(154,211,255,0.08);
+}
+
+  #Qualificações {
+    color: white;
+    margin-left: 12.3rem;
+  }
+    
+        
+   .main2 {
+    color: white;
+    text-align: center;
+  }
+
+  .section-imagens {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  #img3 {
+    width: 30rem;
+    height: 30rem;
+  }
+
+  .rodape {
+    color: white;
+    text-align: center;
+  }
+
+  /* Seção de contato */
+  .contato {
+    padding: 2rem;
+    text-align: center;
+    color: white;
+  }
+
+  .botoes-contato {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .botao {
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.2s;
+  }
+
+  .botao:hover {
+    transform: translateY(-2px);
+  }
+
+  .email {
+    background: #4a4a4a;
+    color: white;
+  }
+
+  .whatsapp {
+    background: #25D366;
+    color: white;
+  }
+
+  /* Modal de boas-vindas */
+  .welcome-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.6);
+    z-index: 9999;
+  }
+  .welcome-overlay.hidden { display: none; }
+  .welcome-box {
+    background: linear-gradient(135deg,#070707 0%, #121212 100%);
+    color: #fff;
+    padding: 1.6rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    max-width: 92%;
+    width: 420px;
+    text-align: center;
+    animation: welcomeFade .18s ease;
+  }
+  .button-ok {
+    margin-top: 1rem;
+    padding: .6rem 1.1rem;
+    border-radius: 8px;
+    border: none;
+    background: #fff;
+    color: #000;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .button-ok:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(255,255,255,0.08); }
+
+  @keyframes welcomeFade {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* botão para página Financial */
+.link-financial {
+    text-align: center;
+    margin: 1.2rem 0;
+}
+.btn-financial {
+  display: inline-block;
+  padding: 0.6rem 1.1rem;
+  background: linear-gradient(90deg,#0b0b0b 0%, #111827 50%, #0b0b0b 100%);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6), 0 0 0 rgba(0,0,0,0);
+  transition: transform .15s ease, box-shadow .2s ease, filter .2s;
+}
+
+.btn-financial:hover {
+  transform: translateY(-4px);
+  filter: brightness(1.15);
+  box-shadow: 0 8px 30px rgba(58, 123, 213, 0.28), 0 0 40px rgba(58,123,213,0.18);
+}
+
+#voltardapaginafinancial {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+/* media queries para responsividade */
+
+/* Para telas de até 768px (Tablets e Celulares) */
+@media (max-width: 768px) {
+    
+    /* O Hub de Engenharia passa de colunas para uma lista vertical */
+    .container, .hub-grid {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    /* Reorganizar layout do corpo (foto em cima, texto embaixo, centralizado) */
+    .corpo {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .corpo img {
+        width: 200px;
+        height: 300px;
+        margin-bottom: 1.5rem;
+    }
+
+    #subtitulo {
+        font-size: 0.85rem;
+        max-width: 100%;
+    }
+
+    /* Ajuste do Diagrama de Venn do Motor de Dobra */
+    .venn-diagram {
+        transform: scale(0.8); /* Diminui um pouco para não cortar nas bordas */
+        margin: 0 auto;
+    }
+
+    /* Tabelas e Conversores ocupam 100% da largura */
+    .modulo-conversao, .card-logica {
+        width: 100% !important;
+        margin-bottom: 20px;
+    }
+
+    /* Ajuste do cabeçalho (Header) */
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    /* Centralizar seção de Qualificações em telas pequenas */
+    #Qualificações {
+        margin-left: 0;
+        text-align: left;
+        padding: 0 1rem;
+    }
+
+    /* Garantir que o botão financial apareça em telas pequenas */
+    .link-financial {
+        display: block !important;
+        text-align: center;
+        margin: 1.2rem auto;
+        padding: 0 1rem;
+    }
+
+    /* Ajustar o container do motor de dobra para não sobrepor o widget */
+    #motor-de-dobra-container {
+        position: relative;
+        z-index: 2;
+        margin-top: 2rem;
+        padding: 1rem 0;
+    }
+
+    /* Escala reduzida do widget TradingView em telas pequenas */
+    .tradingview-widget-container {
+        width: 100% !important;
+        overflow-x: auto;
+    }
+
+    .tradingview-widget-container__widget {
+        min-width: 100%;
+        transform: scale(0.5);
+        transform-origin: top left;
+        width: 200%;
+        margin-left: -50%;
+    }
+
+    /* Redimensionar imagens da página Sobre */
+    #img1, #img2, #img3 {
+        width: 100% !important;
+        height: auto !important;
+        max-width: 300px;
+    }
+}
+
+/* Estilos do Chatbot */
+.chat-toggle-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #1a2a3a;
+    color: white;
+    border: 2px solid #00ff00;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    box-shadow: 0 4px 12px rgba(0, 255, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.chat-toggle-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 255, 0, 0.4);
+}
+
+.chat-toggle-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+.chat-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 320px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    z-index: 1000;
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+.chat-minimized {
+    width: 0 !important;
+    height: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    display: none !important;
+}
+
+.chat-header {
+    background: #1a2a3a;
+    color: #ffffff;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.chat-close-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    transition: transform 0.2s ease;
+}
+
+.chat-close-btn:hover {
+    transform: rotate(90deg);
+}
+
+.chat-close-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.chat-window {
+    height: 250px;
+    overflow-y: auto;
+    padding: 15px;
+    background: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.chat-input-area {
+    padding: 10px;
+    background: #ffffff;
+    display: flex;
+    gap: 5px;
+    border-top: 1px solid #eee;
+}
+
+.diagram-container {
+    width: 100%;
+    overflow-x: auto;
+    display: flex;
+    justify-content: center;
+}
