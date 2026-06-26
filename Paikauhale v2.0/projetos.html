@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z4RHTWNE6R"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Z4RHTWNE6R');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Projetos da Paikauhale Software Engineering — SaaS e sistemas desenvolvidos com precisão técnica.">
+  <title>Projetos — Paikauhale Software Engineering</title>
+  <link rel="shortcut icon" href="imagens/favicon.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy:       #070d1a;
+      --navy-2:     #0a1022;
+      --navy-3:     #0e1630;
+      --panel:      rgba(14, 30, 60, 0.6);
+      --border:     rgba(79, 195, 247, 0.12);
+      --border-hi:  rgba(79, 195, 247, 0.35);
+      --blue:       #4fc3f7;
+      --cyan:       #00e5ff;
+      --silver:     #a8c4d4;
+      --text:       #d6eaf5;
+      --muted:      #6a90a8;
+      --font-sans:  'Space Grotesk', system-ui, sans-serif;
+      --font-mono:  'JetBrains Mono', 'Courier New', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* fundo estrelas — igual à landing */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(1px 1px at 15% 25%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 80% 10%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 45% 60%, rgba(255,255,255,0.25) 0%, transparent 100%),
+        radial-gradient(1px 1px at 90% 70%, rgba(255,255,255,0.35) 0%, transparent 100%),
+        radial-gradient(1px 1px at 30% 85%, rgba(255,255,255,0.2) 0%, transparent 100%),
+        radial-gradient(1px 1px at 65% 40%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 5%  55%, rgba(255,255,255,0.25) 0%, transparent 100%),
+        radial-gradient(1px 1px at 72% 88%, rgba(255,255,255,0.2) 0%, transparent 100%),
+        radial-gradient(900px 600px at 80% 20%, rgba(0,100,200,0.08) 0%, transparent 60%),
+        radial-gradient(700px 500px at 10% 80%, rgba(0,50,120,0.07) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    ::selection { background: rgba(0,229,255,0.18); }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ── NAV (idêntico à landing) ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(7,13,26,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .nav-logo-img {
+      width: 40px; height: 40px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+    .nav-brand-text {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: -0.3px;
+    }
+    .nav-brand-text span { color: var(--cyan); }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--blue); }
+    .nav-cta {
+      padding: 0.45rem 1.1rem;
+      border: 1px solid var(--border-hi);
+      border-radius: 6px;
+      color: var(--blue) !important;
+      background: rgba(79,195,247,0.06);
+      transition: background 0.2s, border-color 0.2s !important;
+    }
+    .nav-cta:hover {
+      background: rgba(79,195,247,0.14) !important;
+      border-color: var(--cyan) !important;
+      color: var(--cyan) !important;
+    }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      position: relative;
+      z-index: 1;
+      padding: 8rem 0 4rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .page-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.7rem;
+      opacity: 0.85;
+    }
+    .page-title {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 700;
+      letter-spacing: -1.2px;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .page-lead {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    /* ── MAIN CONTENT ── */
+    .projects-page {
+      position: relative;
+      z-index: 1;
+      padding: 5rem 0 7rem;
+    }
+    .projects-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ── PROJETO DESTAQUE (card grande) ── */
+    .featured-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 1.5rem;
+      opacity: 0.8;
+    }
+
+    .project-featured {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      margin-bottom: 5rem;
+      transition: border-color 0.3s;
+    }
+    .project-featured:hover { border-color: var(--border-hi); }
+
+    /* painel esquerdo — info */
+    .featured-info {
+      padding: 3rem 3rem 3rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 1px solid var(--border);
+    }
+    .featured-tag {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      background: rgba(0,229,255,0.07);
+      border: 1px solid rgba(0,229,255,0.18);
+      padding: 0.25rem 0.7rem;
+      border-radius: 4px;
+      align-self: flex-start;
+      margin-bottom: 1.5rem;
+    }
+    .featured-title {
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.5px;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    .featured-desc {
+      font-size: 0.925rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+    .featured-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .featured-stack span {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--blue);
+      background: rgba(79,195,247,0.07);
+      border: 1px solid rgba(79,195,247,0.18);
+      padding: 0.28rem 0.7rem;
+      border-radius: 5px;
+    }
+    .featured-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .btn-project {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.4rem;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .btn-project.primary {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--cyan) 100%);
+      color: #020d18;
+    }
+    .btn-project.primary:hover { filter: brightness(1.1); transform: translateY(-2px); }
+    .btn-project.ghost {
+      border: 1px solid var(--border-hi);
+      color: var(--blue);
+      background: rgba(79,195,247,0.05);
+    }
+    .btn-project.ghost:hover { border-color: var(--cyan); background: rgba(0,229,255,0.08); transform: translateY(-2px); }
+    .btn-project.disabled {
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: transparent;
+      cursor: default;
+      opacity: 0.6;
+    }
+
+    /* painel direito — visual do produto */
+    .featured-visual {
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: rgba(10,16,34,0.5);
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    /* ── Mockup fiel ao app real ── */
+    .mock-app-layout {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 0;
+      min-height: 280px;
+      min-width: 0;
+    }
+    .mock-sidebar {
+      background: #060c14;
+      border-right: 1px solid var(--border);
+      padding: 0.9rem 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+    .mock-section-label {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.3rem;
+      opacity: 0.7;
+    }
+    .mock-input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+    .mock-input-label {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .mock-input-field {
+      background: rgba(0,229,255,0.04);
+      border: 1px solid rgba(0,229,255,0.12);
+      border-radius: 4px;
+      padding: 0.3rem 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text);
+    }
+    .mock-calc-btn {
+      margin-top: auto;
+      padding: 0.5rem;
+      background: var(--cyan);
+      color: #020d18;
+      border-radius: 5px;
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .mock-output {
+      padding: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .mock-output-title {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      opacity: 0.8;
+    }
+    .mock-output-sub {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--muted);
+      margin-top: -0.3rem;
+    }
+    .mock-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+    .mock-card {
+      background: rgba(0,229,255,0.04);
+      border: 1px solid rgba(0,229,255,0.1);
+      border-radius: 6px;
+      padding: 0.6rem 0.7rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+    .mock-card-num {
+      font-family: var(--font-mono);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--cyan);
+      line-height: 1;
+    }
+    .mock-card-unit {
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .mock-card-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--silver);
+    }
+    .mock-area-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.3rem 0;
+      border-top: 1px solid var(--border);
+    }
+    .mock-area-label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .mock-area-value {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--cyan);
+      font-weight: 700;
+    }
+    .mock-total-card {
+      background: var(--cyan);
+      border-radius: 6px;
+      padding: 0.7rem 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .mock-total-label {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      color: #021520;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      opacity: 0.75;
+    }
+    .mock-total-value {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #020d18;
+    }
+
+    /* ── Seção de vídeo ── */
+    .video-section {
+      margin-bottom: 4rem;
+    }
+    .video-wrapper {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: rgba(10,16,34,0.6);
+      aspect-ratio: 16 / 9;
+      position: relative;
+    }
+    .video-wrapper video,
+    .video-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: none;
+    }
+    .video-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      border: 2px dashed rgba(79,195,247,0.15);
+      border-radius: 14px;
+    }
+    .video-placeholder p {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    .video-placeholder code {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--cyan);
+      opacity: 0.5;
+      background: rgba(0,229,255,0.05);
+      padding: 0.3rem 0.7rem;
+      border-radius: 4px;
+      border: 1px solid rgba(0,229,255,0.1);
+    }
+
+    /* status badges */
+    .featured-meta {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .meta-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-family: var(--font-mono);
+    }
+    .meta-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+    }
+    .meta-dot.active { background: #28c840; box-shadow: 0 0 5px #28c84066; }
+    .meta-dot.building { background: var(--blue); box-shadow: 0 0 5px rgba(79,195,247,0.4); }
+
+    /* ── CTA contato ── */
+    .contact-cta {
+      margin-top: 1rem;
+      padding: 3rem;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .contact-cta p {
+      font-size: 1.1rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── FOOTER ── */
+    .footer {
+      position: relative;
+      z-index: 1;
+      padding: 3rem 0;
+      border-top: 1px solid var(--border);
+      background: var(--navy-2);
+    }
+    .footer-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      text-align: center;
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.4rem;
+    }
+    .footer-brand img { width: 32px; height: 32px; border-radius: 6px; object-fit: cover; }
+    .footer-brand span { font-family: var(--font-mono); font-size: 0.9rem; color: var(--text); }
+    .footer-brand span em { color: var(--cyan); font-style: normal; }
+    .footer-copy { font-size: 0.78rem; color: var(--muted); }
+    .footer-sub  { font-size: 0.72rem; color: rgba(106,144,168,0.5); }
+
+    /* ── RESPONSIVIDADE ── */
+    @media (max-width: 900px) {
+      .project-featured { grid-template-columns: 1fr; }
+      .featured-info { border-right: none; border-bottom: 1px solid var(--border); }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 68px; left: 0; right: 0;
+        background: rgba(7,13,26,0.98);
+        padding: 1.5rem 2rem;
+        border-bottom: 1px solid var(--border);
+        gap: 1.5rem;
+      }
+      .nav-hamburger { display: flex; }
+      .featured-info { padding: 2rem; }
+      .featured-visual { padding: 1.5rem; }
+      .mock-app-layout {
+        grid-template-columns: 130px 1fr;
+        min-height: 240px;
+      }
+    }
+    @media (max-width: 480px) {
+      .upcoming-grid { grid-template-columns: 1fr; }
+      .featured-actions { flex-direction: column; }
+      .btn-project { justify-content: center; }
+      .featured-visual { padding: 1rem; }
+      .mock-app-layout {
+        grid-template-columns: 1fr;
+        min-height: unset;
+      }
+      .mock-sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+      .mock-calc-btn { margin-top: 0.5rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" aria-label="Navegação principal">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand" aria-label="Paikauhale — página inicial">
+        <img src="imagens/logoengineering.jpeg" alt="" class="nav-logo-img">
+        <span class="nav-brand-text">Paikauhale<span>.</span></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#servicos">Serviços</a></li>
+        <li><a href="projetos.html" class="active">Projetos</a></li>
+        <li><a href="index.html#sobre">Sobre</a></li>
+        <li><a href="index.html#contato" class="nav-cta">Contato</a></li>
+      </ul>
+      <button class="nav-hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header" aria-label="Cabeçalho da página">
+    <div class="page-header-inner">
+      <p class="page-eyebrow">O que construímos</p>
+      <h1 class="page-title">Projetos</h1>
+      <p class="page-lead">Sistemas reais, em desenvolvimento ativo. Cada projeto aqui representa uma solução técnica para um problema concreto.</p>
+    </div>
+  </header>
+
+  <!-- PROJETOS -->
+  <main class="projects-page">
+    <div class="projects-inner">
+
+      <!-- Projeto em destaque -->
+      <p class="featured-label">— Projeto em destaque</p>
+
+      <article class="project-featured reveal" aria-label="Projeto DrywallCalc">
+        <!-- Info -->
+        <div class="featured-info">
+          <div>
+            <div class="featured-tag">SaaS · Construção Civil</div>
+            <h2 class="featured-title">Calculadora de Insumos<br>para Drywall</h2>
+            <p class="featured-desc">
+              Plataforma web que automatiza o cálculo de materiais e gera orçamentos para instalações de drywall. O usuário informa as dimensões do ambiente e o sistema retorna a quantidade exata de cada insumo necessário — perfis, placas, parafusos, massa e fita — junto com o orçamento final formatado.
+            </p>
+            <div class="featured-stack">
+              <span>TypeScript</span>
+              <span>React</span>
+              <span>Node.js</span>
+              <span>SQLite</span>
+            </div>
+            <div class="featured-meta">
+              <span class="meta-badge">
+                <span class="meta-dot active"></span>
+                Disponível
+              </span>
+              <span class="meta-badge">
+                <span class="meta-dot active"></span>
+                Autenticação com login
+              </span>
+            </div>
+          </div>
+          <div class="featured-actions" style="margin-top: 2.5rem;">
+            <a href="https://paikauhalesaasproject.netlify.app/" class="btn-project primary" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="15" height="15">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/>
+                <line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+              Ver projeto
+            </a>
+            <a href="https://github.com/LucasBertoncelo/motor-drywall" class="btn-project ghost" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15">
+                <path d="M12 .5C5.73.5.75 5.48.75 11.76c0 4.92 3.18 9.09 7.59 10.56.56.1.76-.24.76-.53 0-.26-.01-.95-.01-1.86-3.09.67-3.74-1.49-3.74-1.49-.5-1.28-1.22-1.62-1.22-1.62-.99-.68.08-.67.08-.67 1.1.08 1.67 1.13 1.67 1.13.98 1.67 2.57 1.19 3.2.91.1-.71.38-1.19.69-1.46-2.47-.28-5.07-1.24-5.07-5.52 0-1.22.44-2.22 1.16-3-.12-.28-.5-1.42.11-2.96 0 0 .95-.31 3.12 1.14a10.8 10.8 0 0 1 2.84-.38c.96 0 1.93.13 2.84.38 2.16-1.45 3.12-1.14 3.12-1.14.61 1.54.23 2.68.11 2.96.72.78 1.16 1.78 1.16 3 0 4.29-2.61 5.24-5.09 5.52.39.34.74 1.02.74 2.06 0 1.49-.01 2.69-.01 3.06 0 .29.2.64.77.53A11.27 11.27 0 0 0 23.25 11.76C23.25 5.48 18.27.5 12 .5z"/>
+              </svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Visual / Mockup fiel ao sistema real -->
+        <div class="featured-visual" aria-hidden="true">
+          <div class="mockup-window">
+            <div class="mockup-bar">
+              <span class="mockup-dot red"></span>
+              <span class="mockup-dot yellow"></span>
+              <span class="mockup-dot green"></span>
+              <span class="mockup-url">localhost:5173 — Paikauhale Software</span>
+            </div>
+            <div class="mockup-body">
+
+              <!-- layout do app real: sidebar esquerda + output direita -->
+              <div class="mock-app-layout">
+
+                <!-- sidebar de inputs -->
+                <div class="mock-sidebar">
+                  <p class="mock-section-label">Parâmetros da Parede</p>
+                  <div class="mock-input-group">
+                    <span class="mock-input-label">Comprimento</span>
+                    <div class="mock-input-field">5.00</div>
+                  </div>
+                  <div class="mock-input-group">
+                    <span class="mock-input-label">Altura</span>
+                    <div class="mock-input-field">3.00</div>
+                  </div>
+                  <div class="mock-input-group">
+                    <span class="mock-input-label">Tipo de Placa</span>
+                    <div class="mock-input-field">ST — Standard</div>
+                  </div>
+                  <div class="mock-input-group">
+                    <span class="mock-input-label">Faces</span>
+                    <div class="mock-input-field">1 — Face simples</div>
+                  </div>
+                  <div class="mock-input-group">
+                    <span class="mock-input-label">Espaçamento Montantes</span>
+                    <div class="mock-input-field">60 cm — Standard</div>
+                  </div>
+                  <div class="mock-calc-btn">▶ Calcular Orçamento</div>
+                </div>
+
+                <!-- output -->
+                <div class="mock-output">
+                  <p class="mock-output-title">Output · Insumos Calculados</p>
+                  <p class="mock-output-sub">5m × 3m — 15.00 m² · 1 face(s)</p>
+
+                  <div class="mock-cards-grid">
+                    <div class="mock-card">
+                      <span class="mock-card-num">6</span>
+                      <span class="mock-card-unit">Unidades</span>
+                      <span class="mock-card-label">Placas de Drywall</span>
+                    </div>
+                    <div class="mock-card">
+                      <span class="mock-card-num">4</span>
+                      <span class="mock-card-unit">Barras × 3m</span>
+                      <span class="mock-card-label">Guias (Perfil U)</span>
+                    </div>
+                    <div class="mock-card">
+                      <span class="mock-card-num">10</span>
+                      <span class="mock-card-unit">Unidades</span>
+                      <span class="mock-card-label">Montantes (Perfil C)</span>
+                    </div>
+                    <div class="mock-card">
+                      <span class="mock-card-num">150</span>
+                      <span class="mock-card-unit">Unidades</span>
+                      <span class="mock-card-label">Parafusos</span>
+                    </div>
+                  </div>
+
+                  <div class="mock-area-row">
+                    <span class="mock-area-label">Área Total de Placa</span>
+                    <span class="mock-area-value">15.00 m²</span>
+                  </div>
+
+                  <div class="mock-total-card">
+                    <span class="mock-total-label">Custo Estimado de Materiais</span>
+                    <span class="mock-total-value">R$ 797,50</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- VÍDEO DEMO -->
+      <div class="video-section">
+        <p class="featured-label" style="margin-bottom: 1.2rem;">— Demo do produto</p>
+        <div class="video-wrapper">
+          <video controls poster="imagens/drywall-thumb.png">
+            <source src="videos/drywall-demo.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <!-- CTA contato -->
+      <div class="contact-cta reveal">
+        <p>Quer um sistema como esse para o seu negócio?</p>
+        <a href="index.html#contato" class="btn-project primary">Solicitar orçamento</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" aria-label="Rodapé">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="imagens/logoengineering.jpeg" alt="">
+        <span>Paikauhale <em>Software Engineering</em></span>
+      </div>
+      <p class="footer-copy">© 2026 Paikauhale — Todos os direitos reservados.</p>
+      <p class="footer-sub">Engenharia de Software por Lucas Bertoncelo</p>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks  = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', open);
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+      nav.style.boxShadow = window.scrollY > 20 ? '0 4px 40px rgba(0,0,0,0.5)' : 'none';
+    }, { passive: true });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
